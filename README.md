@@ -28,6 +28,71 @@ years, so treat the paths as approximate.
 
 ---
 
+## Your TV: The Frame Pro 75" (QN75LS03FWFXZA, 2025)
+
+This is a 2025 model, so it runs the newest and most locked-down version of
+Tizen. There's no root and no way to swap the launcher. TizenBrew is
+hit-and-miss on 2024+ models. Even if you could get in, nothing in there would
+make it faster: there's no hidden "speed" or overclock setting. The slowness
+comes from three places, and each has its own fix.
+
+### 1. Menus and remote feel sluggish
+Reviewers flagged this on the Frame Pro: Trusted Reviews lists a "laggy,
+stuttering interface with Wireless One Connect" as a con, and owners report
+the remote not responding. Work through these in order:
+1. **Update the firmware:** Settings → All Settings → Support → Software
+   Update → Update Now. Turn on Auto Update. Reviewers say this is the first
+   thing to try for interface speed.
+2. **Do a real cold reboot.** A normal press of the power button never
+   restarts the TV; it only switches between Art Mode and standby. Unplug
+   **both** the TV and the Wireless One Connect box from the wall for 60
+   seconds. Owners report this gives relief, though for some it only lasts a
+   few days.
+3. **Run Device Care:** Settings → All Settings → Support → Device Care →
+   Start Device Care. Samsung says it clears cached memory and closes
+   background apps. Then go to **Manage Storage**, pick any slow app, and
+   choose **Clear cache**. Don't choose Clear data, which signs you out.
+4. **Cut background load.** Follow Tier 1 below: turn off Viewing Information
+   Services (it constantly fingerprints what's on screen), turn off all three
+   Autorun options, and delete apps you don't use. If you don't talk to the
+   TV, also turn off voice wake-up (Settings → General → Voice).
+5. **Re-pair the remote** if presses get dropped: point it at the TV and hold
+   **Back + Play/Pause** together for about 3 seconds.
+6. **Last resort:** a factory reset (Settings → All Settings → General &
+   Privacy → Reset; the default PIN is 0000). After that, set up only what you
+   use.
+
+If it's still bad after all of that, it's a defect or design flaw, not a
+settings problem. The TV is under Samsung's warranty, so use it, or exchange
+it if you're still inside the store's return window.
+
+### 2. Devices plugged into HDMI feel delayed (console, PC, cable box)
+Everything plugged into the **Wireless One Connect box** travels to the TV
+over a wireless link. Measured input lag through the box was about 35–36 ms
+at 4K60 (Tom's Guide, TechRadar), against about 9–14 ms through the TV's own
+port (Choose.tv).
+
+- The TV panel has its own **Micro-HDMI 2.1 port** on the back. Plug your
+  console or PC in there with a certified Ultra High Speed Micro-HDMI-to-HDMI
+  cable. That bypasses the wireless link completely. On the 2025 model this
+  port has **no eARC**, so a soundbar still goes on the box.
+- For everything else, keep the box within about 10 m with a clear line of
+  sight to the TV. Not in a closed cabinet, not behind metal. Samsung warns
+  that walls and obstructions hurt the link.
+- For games, turn on Game Mode and Auto Game Mode (ALLM).
+
+### 3. Apps are slow to open, scroll, or start playing
+This is the TV's processor and Tizen's apps, and no setting fixes it
+properly. The real fix is a **streaming box**. The current Apple TV 4K is the
+fastest and cleanest. A Google TV Streamer works if you want the debloat +
+FLauncher route from Tier 4. Plug the box into the TV's Micro-HDMI port to
+skip the wireless hop too, or into the One Connect box if the TV's port is
+taken by a console. Art Mode keeps working either way. The TV's built-in
+processor is fixed for its whole life, while a streaming box is cheap to
+replace when it eventually gets slow.
+
+---
+
 ## Tier 1: Settings (10 minutes, no risk)
 
 ### 1. Turn off tracking and ad targeting
@@ -231,3 +296,11 @@ no risk.
 - RTINGS smart-TV tracking tests: https://www.rtings.com/tv/learn/research/smart-tv-tracking
 - Stopping TV Plus autorun: https://www.tomsguide.com/tvs/you-can-stop-samsung-tv-plus-from-playing-automatically-heres-how
 - Forcing DNS through Pi-hole: https://labzilla.io/blog/force-dns-pihole
+- Frame Pro review (laggy interface with Wireless One Connect): https://www.trustedreviews.com/reviews/samsung-frame-pro
+- Frame Pro review (input lag over the wireless box): https://tomsguide.com/tvs/samsung-frame-pro-tv-2025-review
+- Frame Pro review (wired Micro-HDMI vs wireless input lag): https://www.choose.tv/us/tv/reviews/samsung/samsung-the-frame-pro_AGM
+- TechRadar on Wireless One Connect input lag: https://www.techradar.com/televisions/i-tested-samsungs-new-wireless-tv-connection-box-and-gamers-need-to-know-one-thing
+- RTINGS Frame Pro review: https://www.rtings.com/tv/reviews/samsung/the-frame-pro-2025
+- Best Buy Q&A (no wired box link; Micro-HDMI on the TV): https://www.bestbuy.com/site/questions/samsung-65-class-ls03fw-the-frame-pro-series-neo-qled-4k-uhd-art-mode-samsungvision-ai-smart-tv-w-wall-mount-2025/6613680/question/6c18c7d5-153a-3655-a507-f339760af709
+- Samsung Device Care: https://www.samsung.com/uk/support/tv-audio-video/how-to-device-care
+- Owner reports of Frame Pro lag: https://us.community.samsung.com/t5/QLED-and-The-Frame-TVs/2025-Frame-Remote-Stops-Working/td-p/3248647
