@@ -1,0 +1,4 @@
+# Downloaded adb tools and this TV's personal change log stay local
+google-tv/platform-tools/
+google-tv/my-changes.txt
+google-tv/packages-before.txt
