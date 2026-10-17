@@ -32,6 +32,59 @@ Read `google-tv/README.md` (the owner's guide) and `google-tv/packages.md`
   launcher is installed **and has been opened once** (see the guide). Never
   disable `com.google.android.apps.tv.launcherx` without one.
 
+## Apple TV-style home screen (tv-vibehack)
+`google-tv/tv-vibehack/` is a reviewed copy of
+<https://github.com/Gathin23/tv-vibehack> (MIT, commit `19f3c22`). It's the
+launcher from the tweet the owner wants to copy. If the owner pastes its
+`PROMPT.md`, follow it, but these rules override it on this TV:
+- The rules above still apply. The "Never touch" list beats the prompt's
+  "disable the manufacturer categories" step, and every change goes in
+  `my-changes.txt`.
+- This is Google TV. The stock launcher is
+  `com.google.android.apps.tv.launcherx`, **not**
+  `com.google.android.tvlauncher`, which is what the repo's scripts default
+  to. Pass the right package, or run the adb commands below directly.
+- Edit `launcher/app/src/main/res/values/config.xml`:
+  - `dock_apps`: the four apps the owner picks, in their order. Show them the
+    installed TV apps to choose from.
+  - `live_tv_package`: TCL's live TV/tuner app. Find it on the TV; the
+    Xiaomi value there may not exist on this TV.
+  - `hidden_apps`: that live TV app, plus anything the owner never wants to
+    see.
+- Building needs JDK 17, plus Android SDK platform 34 and build-tools 34.0.0.
+  Put them inside `google-tv/build-tools/`, not system-wide. On Windows, use
+  the Temurin JDK 17 zip and the Android command-line tools zip.
+- Before running `gradlew` the first time, check that the SHA-256 of
+  `launcher/gradle/wrapper/gradle-wrapper.jar` matches Gradle 8.9's official
+  wrapper checksum (<https://gradle.org/release-checksums/>). At review time
+  it was `3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98`.
+- Install with plain adb:
+  `adb install -r app/build/outputs/apk/debug/app-debug.apk`, then
+  `adb shell pm grant com.gathin.tvhome android.permission.ACCESS_FINE_LOCATION`,
+  then `adb shell cmd package set-home-activity --user 0 com.gathin.tvhome`.
+  Press Home (`adb shell input keyevent KEYCODE_HOME`), take a screenshot
+  (`adb exec-out screencap -p > google-tv/screen.png`), and look at it before
+  going further.
+- Only after the new home screen works: disable `launcherx` (log it) and
+  reboot. If Google's home screen comes back after the reboot, also disable
+  `com.google.android.tungsten.setupwraith` (log it).
+- Then have the owner test:
+  - the launcher's Inputs menu on every HDMI port
+  - the remote's Home, Back and Input buttons
+  - voice search
+  - that an on-screen keyboard appears in a search box. If it doesn't, check
+    `adb shell settings get secure default_input_method` and set Gboard with
+    `ime set` (see the repo's README "Gotchas").
+- Undo, in this order:
+  1. `pm enable com.google.android.apps.tv.launcherx` (and `setupwraith` if
+     you disabled it).
+  2. `cmd package set-home-activity --user 0 com.google.android.apps.tv.launcherx`.
+  3. If the owner wants it gone, `pm uninstall com.gathin.tvhome`. It's an
+     ordinary app.
+- macOS: if `adb connect` fails with "No route to host" even though the TV is
+  reachable, use the repo's `tools/tv.py` Python client as its README
+  describes.
+
 ## Getting adb
 Check whether `adb` is already on PATH. If not, don't install anything
 system-wide:

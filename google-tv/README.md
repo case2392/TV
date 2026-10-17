@@ -63,15 +63,43 @@ Use your own IP address. Claude will:
 Every change is logged in `google-tv/my-changes.txt`.
 
 ## Step 5 (optional): Replace the home screen, like the tweet
+
+### Option A: the tweet's Apple TV-style home screen (free, Claude builds it)
+This folder includes [tv-vibehack](tv-vibehack/), the open-source launcher
+from the tweet. You get:
+- a black screen with a clock
+- your four favourite apps in a dock
+- the rest of your apps one press below
+- Inputs, Wi-Fi and Settings buttons
+
+It has no ads and doesn't use the internet.
+
+Tell Claude:
+
+> Give my TV the Apple TV-style home screen from tv-vibehack.
+
+Claude will:
+1. Ask which four apps go in the dock.
+2. Download Android's build tools into this folder. That's about 1 GB, and
+   takes 10–20 minutes the first time.
+3. Build the launcher and install it.
+4. Check it with screenshots from the TV.
+5. Only then switch off Google's home screen.
+
+Afterwards, test switching HDMI inputs and typing in a search box. Claude will
+walk you through it.
+
+### Option B: Projectivy Launcher (ready-made, nothing to build)
 1. On the TV, install **Projectivy Launcher** from the Play Store and **open
    it once**.
-2. **Easiest way:** in Projectivy, open its settings (top right) → **General**
-   → turn on **Override current launcher**. Now the Home button opens
-   Projectivy.
+2. In Projectivy, open its settings (top right) → **General** → turn on
+   **Override current launcher**. Now the Home button opens Projectivy.
 3. If that doesn't stick (some Google TV updates have broken it), tell Claude:
-   *"Switch my TV's home screen to Projectivy for good."* Claude will disable
-   Google's home screen. Known side effects: the remote's YouTube button may
-   stop working, and you should check that input switching still works.
+   *"Switch my TV's home screen to Projectivy for good."*
+
+Either way: once Google's home screen is switched off, the remote's YouTube
+button may stop working, and you should check that input switching still
+works.
 
 ## Undo
 - Tell Claude *"Undo everything in my-changes.txt"*, or *"Turn
