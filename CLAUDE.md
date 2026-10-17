@@ -1,7 +1,7 @@
 # TV clean-up helper
 
-This folder is for cleaning up the owner's **TCL Google TV** over their home
-network with `adb`: switching off ads and bloatware, and optionally replacing
+This folder is for cleaning up the owner's **TCL 75S551G** (S5 series, 2024,
+Google TV) over their home network with `adb`: switching off ads and bloatware, and optionally replacing
 the home screen. The owner isn't technical. Explain each step in one plain
 sentence before doing it, and keep the TV usable at every step.
 
