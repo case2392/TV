@@ -2,5 +2,5 @@
 
 - **[TCL Google TV](google-tv/README.md)**: switch off the ads and bloatware
   and replace the home screen, with Claude doing the work from your computer.
-- **[Samsung (Tizen) TVs](samsung/README.md)**: what's possible on a Samsung
-  (much less) and what to do instead.
+- **[Samsung The Frame (Tizen)](samsung/README.md)**: cut the ads, tracking
+  and slowness with settings and ad-blocking DNS (no box needed).
