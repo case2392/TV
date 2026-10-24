@@ -5,16 +5,18 @@ Your TCL runs Google TV (Android). That's why we could connect with ADB,
 switch off apps and replace the home screen. **The Frame runs Samsung's own
 system, Tizen, which has none of that:**
 
-- **No ADB.** Samsung's nearest equivalent is Developer Mode with a tool
-  called `sdb`. On retail 2024/2025 TVs it gives no access to Samsung's own
-  apps, often won't connect at all, and when it goes wrong it has left TVs on
-  an unrecoverable "developer" firmware (version 9999.9). Fixing that means a
-  paid Samsung repair, and a Samsung moderator says it voids the warranty.
-  **Skip it.**
-- **No replacement home screen.** Tizen has nothing like Projectivy or the
-  tv-vibehack launcher. The homebrew add-ons (TizenBrew/TizenTube) only add
-  apps, do nothing about home-screen ads, and mostly fail to install on 2024+
-  TVs.
+- **No way to remove Samsung's apps or bloat.** Samsung's nearest thing to ADB
+  is Developer Mode with a tool called `sdb`, but on retail TVs it gives no
+  command line to switch Samsung's apps off with. The only route that actually
+  strips them is rooting the TV with a security exploit. That's the one that
+  has left TVs on unrecoverable "developer" firmware needing a paid repair, so
+  **don't go there.** (Developer Mode by itself, used only to install your own
+  signed app as below, is the normal supported path and is fine.)
+- **No safe replacement of the Home button.** You *can* install a custom
+  home-screen app (see "A custom home-screen app" below), but nothing can
+  reliably make it open when you press **Home** without the same exploit above,
+  and such an app removes no ads either way. Tizen has nothing like Projectivy
+  or the tv-vibehack launcher.
 
 What **does** work is completely safe and can all be undone:
 
@@ -24,6 +26,9 @@ What **does** work is completely safe and can all be undone:
    sponsored tiles from the home screen. You type two numbers into the TV, and
    it costs nothing.
 3. **Speed clean-up:** a proper restart, clearing caches, and resets.
+
+(A cleaner-looking home-screen *app* can also be installed, but it's cosmetic
+and removes no ads — see "A custom home-screen app" near the end.)
 
 Menus move between model years. Paths below cover 2025 (Frame Pro LS03FW,
 Tizen 9), 2023–24 (LS03C/D) and older. If an item isn't where it says, look in
@@ -174,14 +179,32 @@ Updates have been reported to switch some of these settings back on. Spend
 two minutes re-checking Step 1 and Autorun. The DNS setting from Step 3 isn't
 affected by Samsung's toggles.
 
+## A custom home-screen app (optional, cosmetic only)
+A few projects build a cleaner home-screen *app* for the Frame: **CleanFrame**
+(tested on a 2024 Frame) and **Free My TV** (Samsung 2017+). You install them
+with Samsung's own developer tools and your own signing certificate, which is
+safe and reversible. Be clear about what they are:
+- They **remove no ads and disable nothing.** Samsung's home screen stays.
+- Neither has been tested on a 2025 **Frame Pro** like yours.
+- They often **won't open on their own** ("Autorun Last App" is reported not to
+  work for apps you install yourself), so you'd open it by hand like any app.
+- Their trick for taking over the **Home button** uses what looks like a Tizen
+  security hole Samsung is patching, and the author warns the undo may fail
+  after an update. **Skip that part.**
+
+So an app like this is a nicer-looking launcher you open yourself, not an
+ad-remover. The ad/tracking work above is still what does the real job.
+
 ## Not worth doing
-- **Developer Mode / `sdb` / "uninstall Samsung apps" commands.** Explained at
-  the top: locked down on 2024+ firmware, and the failure mode is a repair
-  bill.
-- **TizenBrew/TizenTube.** It only adds an ad-free YouTube. It doesn't touch
-  the home screen and often won't install on 2024+ TVs.
-- **Reframe and other custom home screens.** These are Tizen 6 research
-  projects. They can't take over the Home button on your model.
+- **Rooting the TV** (`samsung-tv-root`, `couchroot`, or any "uninstall Samsung
+  apps" exploit). This is the only thing that truly debloats Tizen, and it's
+  the one with real brick risk on a ~$2000 TV. Not worth it.
+- **The Home-button takeover** in CleanFrame/couchroot, for the reasons above.
+- **TizenBrew/TizenTube.** Only adds an ad-free YouTube app. Doesn't touch the
+  home-screen ads. (It installs on current TVs again since a Sept 2025 fix, but
+  it still won't help with ads or bloat.)
+- **Reframe.** A 2021 Tizen 6 experiment that also needs a Plex server. Doesn't
+  apply to your TV.
 
 ---
 
